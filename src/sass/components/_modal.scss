@@ -1,0 +1,115 @@
+.modal-container {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    transition: all .3s ease;
+    opacity: 0;
+    z-index: -1;
+
+    &.show-modal {
+        z-index: 999;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .modal-shade {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.25);
+        position: fixed;
+        z-index: -1;
+    }
+
+    .modal {
+        padding: 40px;
+    }
+
+    .small-modal {
+        margin-top: 50px;
+    }
+
+    .modal-content {
+        max-width: 485px;
+        margin: 0 auto;
+        padding: 20px 30px 30px;
+        background: var(--color-white);
+        border-radius: 6px;
+        
+    }
+
+    .modal-header {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        border-bottom: 1px solid var(--color-dark-variant);
+        padding-bottom: 12px;
+
+        .modal-title {
+            font-weight: 800;
+            margin-bottom: 0;
+            font-size: 20px;
+        }
+
+        .close-modal {
+            cursor: pointer;
+            font-size: 22px;
+            line-height: 1;
+            border-radius: 50%;
+            background: var(--color-light);
+            height: 3.4rem;
+            width: 3.4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            border: none;
+        }
+
+        .icon {
+            fill: var(--color-dark);
+            width: 2.2rem;
+            height: 2.2rem;
+        }
+    }
+}
+
+.shade {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    transition: all .3s ease-in-out;
+    opacity: 0;
+    z-index: -1;
+    background-color: var(--color-light);
+
+    &.show {
+        opacity: 1;
+        z-index: 999;
+    }
+
+    .modal {
+        max-width: 485px;
+        margin: 0 auto;
+        padding: 20px 30px 30px;
+        background: var(--color-white);
+        border-radius: 6px;
+        margin-top: 8rem;
+        padding: 4rem;
+    }
+
+}
+
+.popup{
+    border: 1px solid red;
+    background: var(--color-white);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

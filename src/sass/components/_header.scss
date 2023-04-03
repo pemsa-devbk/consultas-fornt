@@ -1,0 +1,128 @@
+.right {
+    right: 1.4rem;
+    top: 1.8rem;
+    position: fixed;
+    width: 22rem;
+    z-index: 50;
+
+
+    .top {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 1rem;
+        height: 5.5rem;
+        background: var(--color-white);
+        width: 100%;
+        margin: 0;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--color-light);
+
+        @include respond(tablet) {
+            position: relative;
+            background: none;
+            box-shadow: none;
+            height: auto;
+            padding: 0;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        button {
+            display: inline-block;
+            background: transparent;
+            cursor: pointer;
+            position: absolute;
+            outline: none;
+            left: 1rem;
+            border: none;
+
+            @include respond(tablet) {
+                display: none;
+            }
+
+            svg {
+                fill: var(--color-dark);
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+
+        .profile {
+            display: flex;
+            text-align: right;
+            .info {
+                display: none;
+
+                @include respond(tablet) {
+                    display: block;
+                    margin-right: 1.5rem;
+                }
+            }
+
+            &-photo {
+                width: 3.5rem;
+                height: 3.5rem;
+                border-radius: 50%;
+                overflow: hidden;
+                background: var(--color-primary);
+                // TODO 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                p {
+                    color: #fff;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                }
+            }
+        }
+
+    }
+
+    .theme-toggler {
+        background: var(--color-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 2rem;
+        cursor: pointer;
+        border-radius: var(--border-radius-1);
+        width: 7rem;
+        position: absolute;
+        right: 7rem;
+
+        @include respond(tablet){
+            height: 2rem;
+            position: relative;
+            right: 0;
+        }
+
+        
+
+        div {
+            display: flex;
+            width: 50%;
+            align-items: center;
+            justify-content: center;
+
+            fill: var(--color-dark);
+
+            &.active {
+                background: var(--color-primary);
+                border-radius: var(--border-radius-1);
+                fill: white;
+            }
+        }
+
+        svg {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+
+}

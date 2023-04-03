@@ -1,0 +1,23 @@
+.codeHttp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    &-title{
+        margin-top: 10rem;
+        font-size: 12rem;
+        font-weight: 200;
+    }
+    &-subtitle-1{
+        font-size: 2rem;
+        font-weight: 500;
+    }
+    &-subtitle-2{
+        font-size: 1.6rem;
+        font-weight: 300;
+    }
+    &-subtitle-3{
+        font-size: 1.6rem;
+        font-weight: 400;
+    }
+}

@@ -1,0 +1,27 @@
+.scroll {
+
+    &::-webkit-scrollbar {
+        appearance: none;
+    }
+    &::-webkit-scrollbar-button {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color-primary);
+        border-radius: 20px;
+    }
+    &__x {
+        &::-webkit-scrollbar:vertical {
+            width: .6rem;
+        }
+    }
+
+    &__y{
+        &::-webkit-scrollbar:horizontal {
+            height: 6px;
+        }
+    }
+
+    
+}

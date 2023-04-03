@@ -1,0 +1,141 @@
+.insights {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    margin-bottom: 3rem;
+
+    @include respond(tablet) {
+        grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+        justify-items: center;
+    }
+
+    &__item {
+        background: var(--color-white);
+        padding: var(--card-padding);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--box-shadow);
+        transition: box-shadow 300ms ease;
+
+        &:hover {
+            box-shadow: none;
+        }
+
+        .icon-content {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &.feather {
+                .icon {
+                    padding: .8rem;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            &.typicons {
+                .icon {
+                    padding: .6rem;
+                    width: 3.5rem;
+                    height: 3.5rem;
+                }
+            }
+        }
+
+        .icon {
+            fill: var(--color-white);
+
+        }
+
+
+
+        .open {
+            background: var(--color-success);
+        }
+
+        .close {
+            background: var(--color-warning);
+        }
+
+        .not {
+            background: var(--color-danger);
+        }
+        .test{
+            background: var(--color-test);
+        }
+        .other{
+            background: var(--color-other);
+        }
+
+
+        .middle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .left {
+                margin-right: 2rem;
+            }
+
+            // TODO Verificar el uso en tamaño de disositivos
+            &-title {
+                margin: 1rem 0 0.6rem;
+                font-size: 1.3rem;
+
+            }
+
+            &-value {
+                font-weight: bold;
+                font-size: 2.2rem;
+            }
+        }
+    }
+
+    &-description {
+        font-size: 1.1rem;
+        margin-top: 1.3rem;
+        display: block;
+    }
+
+    .progress {
+        position: relative;
+        width: 8rem;
+        height: 8rem;
+        margin-left: 1rem;
+        border-radius: 50%;
+    }
+
+    .circular-chart {
+        width: 8rem;
+        height: 8rem;
+        stroke: var(--color-primary);
+    }
+
+    .circle-bg {
+        fill: none;
+        stroke: var(--color-background);
+        stroke-width: 3.8;
+    }
+
+    .circle {
+        fill: none;
+        stroke-width: 2.8;
+        stroke-linecap: round;
+        animation: progress 1s ease-out forwards;
+    }
+
+    .progress .number {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}

@@ -1,0 +1,24 @@
+.slide{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 3rem;
+    h3{
+        color: #fff;
+        font-size: 2rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+    }
+    p{
+        text-align: center;
+        font-size: 1.4rem;
+        color: #fff;
+    }
+}
+
+ .swiper-pagination-bullet {
+     background: #fff !important;
+ }

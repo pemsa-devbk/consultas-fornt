@@ -1,0 +1,244 @@
+.primary {
+    color: var(--color-primary);
+}
+
+.danger {
+    color: var(--color-secondary)
+}
+
+.success {
+    color: var(--color-success);
+}
+
+.warning {
+    color: var(--color-warning);
+}
+
+
+
+
+.nav-primary {
+
+    position: fixed;
+    max-height: 100vh;
+    overflow-y: auto;
+    left: -100%;
+    background: var(--color-white);
+    width: 20rem;
+    z-index: 100;
+    box-shadow: 1rem 3rem 4rem var(--color-light);
+    height: 100vh;
+    padding-right: var(--card-padding);
+    transition: left .6s ease;
+    overflow: auto;
+
+    @include respond(tablet) {
+        left: 0;
+        box-shadow: none;
+        width: 7rem;
+        padding-left: 0;
+        transition: width .5s ease;
+        background: var(--color-background);
+
+        &:hover {
+            width: 20rem;
+
+            .sidebar__link-text {
+                width: 70%;
+            }
+
+            .sidebar .sidebar__section {
+                visibility: visible;
+                width: 100%;
+            }
+        }
+    }
+
+    @include respond(laptop) {
+        width: 20rem;
+        padding-left: 2rem;
+        left: 0;
+
+    }
+
+    &.visible {
+        left: 0;
+    }
+}
+
+
+.nav-primary .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+}
+
+.nav-primary .logo {
+    display: flex;
+    justify-content: stretch;
+    margin-left: 1rem;
+    align-items: center;
+
+    h2 {
+        margin-left: 1rem;
+        font-size: 2rem;
+
+        span {
+            font-size: 2rem;
+        }
+    }
+
+    @include respond(tablet) {
+        width: 100%;
+        justify-content: center;
+    }
+
+    @include respond(laptop) {
+        justify-content: flex-start;
+    }
+
+}
+
+.nav-primary .logo h2 {
+    color: var(--color-dark);
+    display: inline;
+
+    @include respond(tablet) {
+        display: none;
+    }
+
+    @include respond(laptop) {
+        display: inline;
+    }
+
+}
+
+.nav-primary .logo img {
+    -webkit-filter: drop-shadow(0px 0px 2px #fff);
+    filter: drop-shadow(0px 0px 2px #fff);
+    width: 4rem;
+    height: 4rem;
+}
+
+.nav-primary .close {
+    display: inline-block;
+    cursor: pointer;
+
+    @include respond(tablet) {
+        display: none;
+    }
+
+    svg {
+        width: 2.8rem;
+        height: 2.8rem;
+        fill: var(--color-dark);
+    }
+}
+
+/* ============================ SIDEVAR ==================== */
+.nav-primary .sidebar {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 3rem;
+    // width: 90%;
+}
+
+.nav-primary .sidebar__link-text {
+    font-weight: 400;
+    display: inline;
+    width: 70%;
+    visibility: visible;
+
+    @include respond(tablet) {
+        transition-delay: 250ms;
+        transition: width .5s ease;
+        width: 0px;
+        overflow: hidden;
+    }
+
+    @include respond(laptop) {
+        width: 70%;
+    }
+
+}
+
+.nav-primary .sidebar .sidebar__section {
+    display: flex;
+    color: var(--color-primary);
+    padding-left: 1rem;
+    align-items: center;
+    position: relative;
+    height: 4rem;
+
+    width: 100%;
+
+    @include respond(tablet) {
+        width: 0px;
+        overflow: hidden;
+    }
+
+    @include respond(laptop) {
+        width: 100%;
+    }
+
+}
+
+.nav-primary .sidebar .sidebar__link {
+    text-decoration: none;
+    display: flex;
+    color: var(--color-info-dark);
+
+    align-items: center;
+    position: relative;
+    transition: all 300ms ease;
+
+
+    width: 100%;
+    height: 4.5rem;
+
+    @include respond(tablet) {
+        width: 100%;
+    }
+
+    @include respond(laptop) {
+        width: 100%;
+    }
+
+}
+
+.nav-primary .sidebar a svg {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 1rem 0 1.5rem;
+    transition: all 300ms ease;
+    fill: var(--color-info-dark);
+}
+
+
+.nav-primary .sidebar a.active {
+    background: var(--color-light);
+    color: var(--color-primary);
+    // margin-left: 2rem;
+
+    &::before {
+        content: '';
+        width: 6px;
+        height: 100%;
+        background: var(--color-primary);
+    }
+
+    svg {
+        fill: var(--color-primary);
+        margin-left: calc(1.5rem - 4px);
+    }
+}
+
+.nav-primary .sidebar .sidebar__link:hover {
+    color: var(--color-primary);
+
+    svg {
+        margin-left: 1rem;
+    }
+}

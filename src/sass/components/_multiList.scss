@@ -1,0 +1,219 @@
+.multi-list {
+    // border: 1px solid red;
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    gap: .5rem;
+
+    @include respond(tablet) {
+        gap: 1rem;
+    }
+
+    @include respond(laptop) {
+        gap: 3rem;
+    }
+
+
+    &>.list {
+
+        background: var(--color-white);
+        box-shadow: var(--box-shadow);
+        position: relative;
+        transition: flex .3s ease;
+        flex: 0 0 3rem;
+        width: 3rem;
+        height: 48rem;
+
+        .loader {
+            opacity: 0;
+        }
+
+        &:hover {
+            flex: 1;
+
+            .loader {
+                opacity: 1;
+            }
+
+            .items-container {
+                opacity: 1;
+            }
+
+            .list-header {
+                position: relative;
+                height: 7rem;
+
+                .list-title {
+                    writing-mode: horizontal-tb;
+                    text-orientation: sideways;
+                }
+
+                input {
+                    opacity: 1;
+                    display: block;
+                }
+            }
+            .list__error{
+                opacity: 1;
+            }
+        }
+
+        @include respond(tablet) {
+            flex: 1 0 0;
+            max-height: 60rem;
+            height: 60rem;
+
+            .loader {
+                opacity: 1;
+            }
+        }
+
+        .items-container {
+            overflow: auto;
+            padding: 0 1rem;
+            transition: opacity .2s ease .25s;
+            opacity: 0;
+            height: 40rem;
+
+            @include respond(tablet) {
+                opacity: 1;
+                max-height: 52rem;
+                height: 52rem;
+            }
+
+            &::-webkit-scrollbar {
+                -webkit-appearance: none;
+            }
+
+            &::-webkit-scrollbar:vertical {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-button {
+                background: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb {
+
+                background-color: var(--color-primary);
+                border-radius: 20px;
+            }
+        }
+    }
+
+    .list__error {
+        overflow: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1rem;
+        transition: opacity .2s ease .25s;
+        opacity: 0;
+        height: 40rem;
+
+        @include respond(tablet) {
+            opacity: 1;
+            max-height: 52rem;
+            height: 52rem;
+        }
+
+    }
+
+    .list-header {
+        padding: 0 .5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: all .2s ease;
+        overflow: hidden;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+
+        input {
+            display: none;
+            opacity: 0;
+        }
+
+        .list-title {
+            font-weight: normal;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            writing-mode: vertical-lr;
+            text-orientation: upright;
+
+        }
+
+        @include respond(tablet) {
+            position: relative;
+            height: 7rem;
+
+            input {
+                display: block;
+                opacity: 1;
+            }
+
+            .list-title {
+                writing-mode: horizontal-tb;
+            }
+        }
+
+        input {
+            margin-top: .5rem;
+            padding: .2rem .5rem;
+            border: 1px solid var(--color-primary);
+            background: transparent;
+            color: var(--color-dark);
+            border: none;
+            outline: none;
+        }
+    }
+
+
+
+    .list-item {
+        background: var(--color-background);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.7rem;
+        padding: 1.4rem var(--card-padding);
+        // border-radius: var(--border-radius-3);
+        // box-shadow: var(--box-shadow);
+        // transition: all 300ms ease;
+        // &:hover{
+        //     // box-shadow: none;
+        // }
+
+        &__right {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0;
+            width: 100%;
+        }
+
+        &__icon {
+            padding: .4rem;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+            display: flex;
+
+            &.delete {
+                background: var(--color-danger);
+            }
+
+            &.add {
+                background: var(--color-success);
+            }
+
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                fill: #fff;
+            }
+        }
+    }
+}

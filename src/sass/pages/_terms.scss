@@ -1,0 +1,52 @@
+.box{
+    background: var(--color-white);
+    width: 100%;
+    padding: 3rem;   
+    box-shadow: var(--box-shadow);
+
+    @include respond(tablet){
+        width: 80%;
+    }
+    @include respond(laptop){
+        max-width: 800px;
+    }
+    &.not{
+        background: transparent;
+        box-shadow: none;
+        width: 100%;
+        padding: 1rem 0;
+    }
+    &.not &__content{
+        max-height: 60rem;
+    }
+    
+    &__content{
+        max-height: 55rem;
+        overflow: auto;
+        text-align: justify;
+        & > p:not(:first-child){
+            margin-top: 1rem;
+        }
+        .box__title{
+            font-size: 2rem;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 4rem;
+            &:not(:first-child){
+                margin-top: 4rem;
+            }
+        }
+    }
+
+    &__actions{
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+
+        .btn{
+            padding: 1rem 4rem;
+        }
+    }
+
+}
