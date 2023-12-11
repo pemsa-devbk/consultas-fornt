@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useStateSuc } from '../../../../hooks/reports';
 import { useQueryStore } from '../../../../hooks/useQueryStore';
-import { AccountEvent } from '../../../../models';
+import { AccountOneEvent } from '../../../../models';
 import Icons from '../../../../assets/icons.svg'
 
 
@@ -11,21 +11,21 @@ export const Table = () => {
     const [state, setState] = useState<string[]>(['open', 'close', 'without']);
     const [textSearch, setTextSearch] = useState('');
 
-    const filterOpen = (accoutn: AccountEvent) => {
+    const filterOpen = (accoutn: AccountOneEvent) => {
         if (state.includes('open')) {
-            return accoutn.eventos?.find(ev => ['O', 'OS'].includes(ev.CodigoAlarma))
+            return ['O', 'OS'].includes(accoutn.evento?.CodigoAlarma || '')
         }
         return false;
     }
-    const filterClose = (accoutn: AccountEvent) => {
+    const filterClose = (accoutn: AccountOneEvent) => {
         if (state.includes('close')) {
-            return accoutn.eventos?.find(ev => ['C', 'CS'].includes(ev.CodigoAlarma))
+            return ['C', 'CS'].includes(accoutn.evento?.CodigoAlarma || '');
         }
         return false;
     }
-    const filterWithOut = (accoutn: AccountEvent) => {
+    const filterWithOut = (accoutn: AccountOneEvent) => {
         if (state.includes('without')) {
-            return accoutn.eventos ? false : true;
+            return accoutn.evento ? false : true;
         }
         return false;
     }
@@ -36,7 +36,7 @@ export const Table = () => {
             setState(() => [...state, filter])
         }
     }
-    const filterName = (accoutn: AccountEvent) => {
+    const filterName = (accoutn: AccountOneEvent) => {
         return accoutn.Nombre.toLowerCase().includes(textSearch.toLowerCase());
     }
 
@@ -100,11 +100,11 @@ export const Table = () => {
                                 <tr key={`${accoutn.CodigoCte}-${idx}`}>
                                     <td data-label="Abonado">{accoutn.CodigoAbonado}</td>
                                     <td data-label="Nombre">{accoutn.Nombre}</td>
-                                    <td data-label="Fecha y Hora">{accoutn.eventos ? accoutn.eventos[0].FechaOriginal + ' ' + accoutn.eventos[0].Hora.substring(0, 5) : '--'}</td>
+                                    <td data-label="Fecha y Hora">{accoutn.evento ? accoutn.evento.FechaOriginal + ' ' + accoutn.evento.Hora.substring(0, 5) : '--'}</td>
                                     <td data-label="Estado"
                                         className={
-                                            accoutn.eventos
-                                                ? (['O', 'OS'].includes(accoutn.eventos[0].CodigoAlarma))
+                                            accoutn.evento
+                                                ? (['O', 'OS'].includes(accoutn.evento.CodigoAlarma))
                                                     ?
                                                     'state open'
                                                     :
@@ -114,15 +114,15 @@ export const Table = () => {
                                         }
                                     >
                                         {
-                                            accoutn.eventos
-                                                ? (['O', 'OS'].includes(accoutn.eventos[0].CodigoAlarma))
+                                            accoutn.evento
+                                                ? (['O', 'OS'].includes(accoutn.evento.CodigoAlarma))
                                                     ?
                                                     'Abierto'
                                                     :
                                                     'Cerrado'
                                                 : 'Sin Estado'}
                                     </td>
-                                    <td data-label="usuario">{accoutn.eventos ? accoutn.eventos[0].NombreUsuario : '--'}</td>
+                                    <td data-label="usuario">{accoutn.evento ? accoutn.evento.NombreUsuario : '--'}</td>
                                     {/* <td data-label="" className='detail'>Detalles</td> */}
                                 </tr>
                             ))

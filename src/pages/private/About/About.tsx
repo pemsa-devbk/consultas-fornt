@@ -182,10 +182,9 @@ const About = () => {
       <div className='center center-width center-height container-fph container-fpw'>
         <div className='home'>
           <img src={logo} alt="" />
-
-          <p className='about-text-1'>Pemsa Monitoreo APP (versión web) 2.0.0</p>
-          <p className='about-text-2'>&copy; 2021-2023 Protección Electrónica Monterrey S.A. de C.V.</p>
-          <p className='about-text-2'>&reg; Protección Electrónica Monterrey S.A. de C.V.</p>
+          <p className='about-text-1'>PRELMO 2.0.0 <span className='danger'>By PEMSA development</span></p>
+          <p className='about-text-2'>&copy; 2021-2023 PRELMO</p>
+          <p className='about-text-2'>&reg; PRELMO</p>
           <a href='#' onClick={() => setShowModal(true)} className='about-text-2'>Terminos, condiciones y aviso de privacidad</a>
         </div>
       </div>
@@ -193,3 +192,4 @@ const About = () => {
   )
 }
 export default About;
+

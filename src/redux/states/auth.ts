@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AuthInfo, Status, UserInfo } from "../../models";
+import { AuthInfo, CompanyInfo, Status, UserInfo } from "../../models";
 
 const userEmpty: UserInfo = {
     id: "",
@@ -9,9 +9,18 @@ const userEmpty: UserInfo = {
     roles: []
 }
 
+const companyEmpty: CompanyInfo = {
+    id: "",
+    name: "",
+    logoPath: "",
+    primaryColor: "",
+    shortName: ""
+}
+
 export const EmptyAuthState: AuthInfo = {
     status: Status.CHEKING,
     user: userEmpty,
+    company: companyEmpty,
     token: '',
     refreshToken: '',
     errorMessage: []
@@ -24,14 +33,15 @@ export const authSlice = createSlice({
     reducers: {
         onCheking: (state) => {
             state.status = Status.CHEKING,
-                state.user = userEmpty;
+            state.user = userEmpty;
         },
         onStartSession: (state) => {
             state.status = Status.STARTSESSION;
         },
         onLogin: (state, action) => {
-            const { token, ...user } = action.payload;
+            const { token, company, ...user } = action.payload;
             state.user = { ...user };
+            state.company = {...company};
             state.token = token;
             state.status = Status.AUTHENTICATED;
         },

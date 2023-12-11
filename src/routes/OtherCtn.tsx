@@ -7,7 +7,7 @@ interface Props {
     children: JSX.Element | JSX.Element[]
 }
 export const OtherCtn = ({children}: Props) => {
-    const {isDark, neutral, primary} = useThemeStore();
+  const {isDark, neutral, primary} = useThemeStore();
   return (
     <>
           <ToastContainer

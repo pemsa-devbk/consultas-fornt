@@ -24,12 +24,12 @@ interface CreateCustomGroup{
 }
 
 export const getMyIndividualAccounts = async() => {
-    const resp = await appInstance.get<{accounts: IndividualAccount[]}>('/accounts/my-individual-accounts');
+    const resp = await appInstance.get<{accounts: IndividualAccount[]}>('/accounts/individual');
     return resp.data.accounts;
 }
 
 export const getMyGroups = async () => {
-    const resp = await appInstance.get<{ groups: GroupAccount[] }>('/accounts/my-groups');
+    const resp = await appInstance.get<{ groups: GroupAccount[] }>('/accounts/groups');
     return resp.data.groups;
 }
 
@@ -39,6 +39,7 @@ export const getAccountsForUser = async(id: string) => {
 }
 
 export const hanldeAccounts = async (data: HanldeAccountRequest) => {
+    
     const resp = await appInstance.post<{ user: User, groups: GroupAccount[], accounts: IndividualAccount[] }>(`/accounts/handle/${data.id}`, {accounts: data.accounts});
     return resp.data;
 }

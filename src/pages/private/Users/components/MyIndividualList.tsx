@@ -41,7 +41,7 @@ export const MyIndividualList = ({ accounts, addAccount }: Props) => {
             {
                 isLoading
                     ?
-                    <Loader />
+                    <Loader  center='F'/>
                     :
                     isError
                         ?

@@ -2,9 +2,10 @@ import { useDispatch, useSelector } from "react-redux"
 import { clearErrorMessage, onLogin, onLogout, onStartSession } from "../redux/states/auth";
 import { AppStore } from "../redux/store";
 import { appInstance } from "../services/axios";
+import { changePrimary } from "../redux/states/theme";
 
 export const useAuthStore = () => {
-    const { status, user, token, errorMessage } = useSelector((state: AppStore) => state.auth)
+    const { status, user, token, errorMessage, company } = useSelector((state: AppStore) => state.auth)
     const dispatch = useDispatch();
 
     const checkAuthToken = async () => {
@@ -15,6 +16,8 @@ export const useAuthStore = () => {
             localStorage.setItem('token', data.token);
             localStorage.setItem('RF-token', data.refreshToken);
             dispatch(onLogin(data));
+            document.documentElement.style.setProperty('--color-primary', data.company.primaryColor ?? '#6f3996');
+            dispatch(changePrimary(data.company.primaryColor ?? '#6f3996'))
         } catch (error) {
             localStorage.removeItem('token');
             localStorage.removeItem('RF-token');
@@ -24,6 +27,9 @@ export const useAuthStore = () => {
     }
 
     const finishCheckAuth = () => {
+        
+        document.documentElement.style.setProperty('--color-primary', '#6f3996');
+
         dispatch(onLogout([]));
     }
 
@@ -66,6 +72,7 @@ export const useAuthStore = () => {
         status,
         user,
         token,
+        company,
         errorMessage,
         // Metodos
         checkAuthToken,

@@ -3,7 +3,6 @@ import { NavLink, Outlet } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import Icons from '../assets/icons.svg';
 import { PrivateRoutes, Roles } from '../models';
-// import { sharingInofrmationService } from '../services/sharing-information.service';
 import { useAuthStore } from '../hooks/useAuthStore';
 import { useQueryClient } from '@tanstack/react-query';
 import { useOutsideClick } from '../hooks';
@@ -15,7 +14,7 @@ interface Props{
 }
 export const NavBar = ({openMenu, setOpenMenu}: Props) => {
   const navRef = useRef<HTMLElement>(null);
-  const {finishCheckAuth, user:{roles}} = useAuthStore();
+  const {finishCheckAuth, user:{roles}, company: {shortName}} = useAuthStore();
   const queryClient = useQueryClient();
 
   
@@ -42,12 +41,12 @@ export const NavBar = ({openMenu, setOpenMenu}: Props) => {
       <nav className='nav-primary' ref={navRef}>
         <div className='top'>
           <div className='logo'>
-            <img src={logo} alt="Logo" />
-            <h2>PEM<span className='danger'>SA</span></h2>
+            <img src={ logo} alt="Logo" />
+            <h2>{shortName.substring(0,3)}<span className='danger'>{shortName.substring(3)}</span></h2>
           </div>
           <div className='close' onClick={closeNav}>
             <svg className='side-nav__icon'>
-              <use xlinkHref={`${Icons}#icon-x`}></use>
+              <use xlinkHref={`$6{Icons}#icon-x`}></use>
             </svg>
           </div>
         </div>
@@ -63,7 +62,7 @@ export const NavBar = ({openMenu, setOpenMenu}: Props) => {
             <svg className='side-nav__icon'>
               <use xlinkHref={`${Icons}#icon-info-large-outline`}></use>
             </svg>
-            <p className='sidebar__link-text'>Monitoreo APP</p>
+            <p className='sidebar__link-text'>PRELMO</p>
           </NavLink>
 
           <p className='sidebar__section'>Administración</p>

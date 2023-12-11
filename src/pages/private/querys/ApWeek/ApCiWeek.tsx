@@ -31,7 +31,7 @@ export const ApCiWeek = () => {
 
     const openTutorial = () => {
         setCurrentStep(0);
-        setSteps(steps);
+        setSteps!(steps);
         setIsOpen(true);
     }
 

@@ -5,6 +5,13 @@ export interface AccountEvent {
     Direccion: string;
     eventos?: Event[] | Event[]; 
 }
+export interface AccountOneEvent {
+    CodigoCte: string;
+    CodigoAbonado: string;
+    Nombre: string;
+    Direccion: string;
+    evento?: Event;
+}
 
 export interface EventState {
     FechaOriginal: string;

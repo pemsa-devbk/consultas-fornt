@@ -29,7 +29,7 @@ export const EstadoSuc = () => {
 
     const openTutorial = () => {
         setCurrentStep(0);
-        setSteps(steps);
+        setSteps!(steps);
         setIsOpen(true);
     }
 
@@ -103,11 +103,11 @@ export const EstadoSuc = () => {
                             </div>
 
                             <div className='insights'>
-                                <Insight id={'state-open'} icon={'unlock'} classIcon={'open feather'} title={'Abiertas'} quantity={data!.cuentas.filter(account => account.eventos?.find(ev => ['OS', 'O'].includes(ev.CodigoAlarma))).length} total={data!.cuentas.length} subTitle={'Sucursales abiertas'} />
+                                <Insight id={'state-open'} icon={'unlock'} classIcon={'open feather'} title={'Abiertas'} quantity={data!.cuentas.filter(account => ['O', 'OS'].includes(account.evento?.CodigoAlarma || '')).length} total={data!.cuentas.length} subTitle={'Sucursales abiertas'} />
 
-                                <Insight id={'state-close'} icon={'lock'} classIcon={'not feather'} title={'Cerradas'} quantity={data!.cuentas.filter(account => account.eventos?.find(ev => ['CS', 'C'].includes(ev.CodigoAlarma))).length} total={data!.cuentas.length} subTitle={'Sucursales cerradas'} />
+                                <Insight id={'state-close'} icon={'lock'} classIcon={'not feather'} title={'Cerradas'} quantity={data!.cuentas.filter(account => ['C', 'CS'].includes(account.evento?.CodigoAlarma || '')).length} total={data!.cuentas.length} subTitle={'Sucursales cerradas'} />
 
-                                <Insight id={'state-without'} icon={'alert-triangle'} classIcon={'close feather'} title={'Sin estado'} quantity={data!.cuentas.filter(account => account.eventos ? false : true).length} total={data!.cuentas.length} subTitle={'Sucursales sin estado'} />
+                                <Insight id={'state-without'} icon={'alert-triangle'} classIcon={'close feather'} title={'Sin estado'} quantity={data!.cuentas.filter(account => account.evento ? false : true).length} total={data!.cuentas.length} subTitle={'Sucursales sin estado'} />
 
                             </div>
 

@@ -1,8 +1,8 @@
-import { AccountBatery, AccountEvent, DataToSend } from '../models';
+import { AccountBatery, AccountEvent, AccountOneEvent, DataToSend } from '../models';
 import { appInstance } from './axios';
 
 export const getStateSuc = async (data: DataToSend) => {
-    const resp = await appInstance.post<{ nombre: string; cuentas: AccountEvent[] }>('reports/state', {
+    const resp = await appInstance.post<{ nombre: string; cuentas: AccountOneEvent[] }>('reports/state', {
         ...data
     });
     return resp.data;

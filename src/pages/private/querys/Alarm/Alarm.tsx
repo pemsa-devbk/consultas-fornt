@@ -32,7 +32,7 @@ export const Alarm = () => {
 
   const openTutorial = () => {
     setCurrentStep(0);
-    setSteps(steps);
+    setSteps!(steps);
     setIsOpen(true);
   }
 

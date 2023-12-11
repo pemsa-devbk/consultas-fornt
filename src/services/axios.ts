@@ -1,6 +1,7 @@
 import axios from 'axios';
-
-export const url = 'http://192.168.1.93:3000';
+// api-consultas.prelmo.com/v1
+export const url = 'https://api-consultas.prelmo.com/v1';
+export const urlDocs = 'https://api-consultas.prelmo.com';
 export const appInstance = axios.create({
     baseURL: url
 });
@@ -9,9 +10,7 @@ appInstance.interceptors.request.use(
     async config => {
         const token = localStorage.getItem('token');
         if(token){
-            config.headers = {
-                'Authorization': `Bearer ${token}`
-            }
+            config.headers.Authorization = `Bearer ${token}`; 
         }
         return config;
     },

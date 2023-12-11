@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Select from 'react-select';
-import * as dayjs from 'dayjs'
+import dayjs from 'dayjs'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { useNavigate } from 'react-router-dom';
@@ -23,12 +23,12 @@ export const QueryAccount = () => {
   const { handleSubmit, formState: { errors }, control, register, setError } = useForm<Inputs>({
     defaultValues:{
       dateEnd: dayjs().format('YYYY-MM-DD'),
-      dateStart: dayjs().subtract(30, 'days').format('YYYY-MM-DD'),
+      dateStart: dayjs().subtract(30, 'day').format('YYYY-MM-DD'),
     },
   });
 
   const onSubmmit: SubmitHandler<Inputs> = (dataForm) => {
-    if(dayjs(dataForm.dateEnd,'YYYY-MM-DD').diff(dayjs(dataForm.dateStart, 'YYYY-MM-DD'), 'days') > 30 ){
+    if(dayjs(dataForm.dateEnd,'YYYY-MM-DD').diff(dayjs(dataForm.dateStart, 'YYYY-MM-DD'), 'day') > 30 ){
       setError("dateStart", {type: "value", message: "Fechas no"})
       return;
     }

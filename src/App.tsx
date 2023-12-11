@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import store from './redux/store'
 import { AppRouter } from './routes/AppRouter'
 import { OtherCtn } from './routes/OtherCtn'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <OtherCtn>
           <AppRouter />
         </OtherCtn>
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </QueryClientProvider>
     </Provider>
   )

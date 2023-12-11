@@ -1,6 +1,7 @@
 export * from './account-batery.model';
 export * from './account-event.model';
 export * from './auth.model';
+export * from './company';
 export * from './groupAccount.model';
 export * from './individualAccount.model';
 export * from './query.model';

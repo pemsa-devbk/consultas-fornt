@@ -7,7 +7,7 @@ import logo from '../../../assets/logo.png'
 import { Slider } from './components/Slider';
 import { Theme } from './components/Theme';
 import { Modal } from '../../../components/Modal';
-import { url } from '../../../services/axios';
+import { urlDocs } from '../../../services/axios';
 
 type Inputs = {
     email: string;
@@ -111,11 +111,11 @@ const Login = () => {
 
                             <button className='btn btn-solid btn-full'>Iniciar sesión</button>
                         </form>
-                        <p className='login--register'>¿No tienes cuenta?, <a href={`${url}/docs/REGISTRO-PLATAFORMA.pdf`} target="_blank">mira el proceso aquí</a></p>
+                        <p className='login--register'>¿No tienes cuenta?, <a href={`${urlDocs}/docs/REGISTRO-PLATAFORMA.pdf`} target="_blank">mira el proceso aquí</a></p>
                         <br />
                         <br />
                         <center>
-                            <p>Plataforma de consultas por PEMSA</p>
+                            <p>PRELMO por PEMSA</p>
                         </center>
                     </div>
                 </section>

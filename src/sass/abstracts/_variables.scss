@@ -1,8 +1,9 @@
 :root {
     // --color-primary: #df4545;
     // --color-primary: #4587df;
-    --color-primary: #134b9f;
-    --color-secondary: #df4545;
+    --color-primary: #6f3996;
+    //--color-secondary: #a47ebe;
+    --color-secondary: color-mix(in srgb, var(--color-primary), #fff 35%);
     // --color-primary: #0065f3;
     // --color-primary: #000066;
     --color-danger: #ff7782;
@@ -26,7 +27,10 @@
 
     --card-padding: 2.2rem;
     --padding-1: 1.2rem;
+    
 
     --box-shadow: 0 2rem 3rem var(--color-light);
     --box-shadow-1: .1rem .1rem 5rem var(--color-light);
 }
+
+$color-primary: #f00;

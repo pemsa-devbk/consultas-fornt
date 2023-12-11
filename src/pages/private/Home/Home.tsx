@@ -7,6 +7,7 @@ const Home = () => {
     <div className='container-fpw container-fph center center-width center-height'>
       <div className='home'>
         <img src={logo} alt="" />
+        <span className='danger'>By PEMSA development</span>
         <div className='links'>
           <a href='https://www.pem-sa.com/'>
             <svg className={`icon`}>
