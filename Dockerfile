@@ -10,7 +10,7 @@ COPY . .
 RUN pnpm run build
 
 ### State 2
-FROM nginx:stable-alpine
+FROM nginx:stable-alpine-slim
 
 ADD ./config/default.conf /etc/nginx/conf.d/default.conf
 

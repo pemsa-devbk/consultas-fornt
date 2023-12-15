@@ -1,0 +1,43 @@
+name: CICD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  create-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v3
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.TOKEN_DEPLOY }}
+    - name: Build the image 
+      run: | 
+        docker build . --tag ghcr.io/pemsa-devbk/consultas-fornt/consultas-front:latest
+        docker push ghcr.io/pemsa-devbk/consultas-fornt/consultas-front:latest
+  deploy:
+    needs: create-docker-image
+    runs-on: ubuntu-latest
+    steps: 
+      - name: install sshpass
+        run: sudo apt-get install -y sshpass
+      - name: SSH into server
+        run: |
+          sshpass -p ${{ secrets.SERVER_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} -p 3000 <<EOF 
+            cd /home/server_admin/dp/prelmo/front/web_5001_consultas/ 2>&1 || echo "Error al cambiar de directorio: \$?"
+            docker login ghcr.io -u pemsa-devbk -p ${{ secrets.TOKEN_DEPLOY }}
+            docker pull ghcr.io/pemsa-devbk/consultas-fornt/consultas-front:latest
+            docker stop consultas-front && docker rm consultas-front
+            docker run -d \
+              --name consultas-front \
+              --restart always \
+              -p 5001:80 \
+              ghcr.io/pemsa-devbk/consultas-fornt/consultas-front:latest
+          EOF
